@@ -1,0 +1,51 @@
+@font-face {
+  font-family: 'icon';
+  src:  url('fonts/icon.eot?yg4jxx');
+  src:  url('fonts/icon.eot?yg4jxx#iefix') format('embedded-opentype'),
+    url('fonts/icon.ttf?yg4jxx') format('truetype'),
+    url('fonts/icon.woff?yg4jxx') format('woff'),
+    url('fonts/icon.svg?yg4jxx#icon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-bank-s:before {
+  content: "\e93e";
+}
+.icon-brain-alt-s:before {
+  content: "\e95f";
+}
+.icon-envelope-alt-l:before {
+  content: "\ea6c";
+}
+.icon-eye-blocked-l:before {
+  content: "\ea72";
+}
+.icon-flag-s:before {
+  content: "\ea8b";
+}
+.icon-pencil-l:before {
+  content: "\eb1f";
+}
+.icon-question-l:before {
+  content: "\eb43";
+}
+.icon-info:before {
+  content: "\ea0c";
+}

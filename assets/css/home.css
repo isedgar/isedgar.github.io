@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+
+header{
+    padding: 25px 0 60px 0;
+}
+
+header a{
+    display: inline;
+    font-size: 48px;
+    font-family: 'Ubuntu', sans-serif;
+    user-select: none;
+    text-decoration: none;
+}
+
+.box-topics{
+    text-align: center;
+}
+
+.topic-link-content{
+    width: 100%;
+    background: #000;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 5px;
+}
+
+.box-topics img{
+    width: 100%;
+    max-width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 5px 5px 0 0;
+}
+
+.topic-link{
+    display: block;
+    width: 640px;
+    height: auto;
+    margin: 30px 20px;
+    padding: 0 !important;
+    /* border: 1px solid #00ec9d7e; */
+    border-radius: 5px;
+}
+
+.topic-info{
+    padding: 34px 10px 46px 10px;
+}
+
+.topic-info .topic-title{
+    font-size: 0.7em;
+    margin: 0 !important;
+}
+
+@media only screen and (max-width: 1920px) {
+    .topic-link{ /* 75% */
+        width: 480px;
+        /* height: 270px; */
+    }
+}
+
+@media only screen and (max-width: 1600px) {
+    header a{
+        font-size: 40px;
+    }
+
+    .topic-link{ /* 50% */
+        width: 320px;
+        /* height: 180px; */
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    header a{
+        font-size: 32px;
+    }  
+}
+
+@media only screen and (max-width: 768px) {
+    header{
+        padding: 15px 0 50px 0;
+    }
+
+    header a{
+        font-size: 24px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    header a{
+        font-size: 32px;
+    }   
+
+    header .text{
+        display: none;
+    }
+
+    .topic-link{
+        margin: 30px 0;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .topic-link{
+        width: 100%;
+    }
+}

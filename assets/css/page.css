@@ -1,0 +1,48 @@
+#header-nav{
+    padding: 11px 48px 27px 48px;
+}
+
+#header-nav a{
+    text-decoration: none;
+    user-select: none;
+    font-size: 64px;
+    color: #fff;
+    opacity: 0.4;
+}
+#header-nav a:hover{
+    opacity: 0.75;
+}
+
+#header-nav p{
+    font-family: 'Courier New', Courier, monospace;
+    user-select: none;
+    color: #fff;
+    opacity: 0.75;
+}
+
+.math-overflow{
+    overflow-x: auto;
+    /* margin: auto; */
+    margin: auto !important;
+    padding: 0 !important;
+}
+
+@media only screen and (max-width: 1600px) {
+    #header-nav a{
+        font-size: 56px;
+    }
+
+    #header-nav{
+        padding: 7px 30px 15px 30px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    #header-nav{
+        padding: 4px 20px 10px 20px;
+    }
+
+    #header-nav a{
+        font-size: 48px;
+    }
+}

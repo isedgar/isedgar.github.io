@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msapplication-TileColor" content="#603cba">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="stylesheet" href="/assets/css/reveal.css">
+    <link rel="stylesheet" href="/assets/css/theme/custom.css">
+    <link rel="stylesheet" href="/assets/icons/style.css">
+    <link rel="stylesheet" href="/assets/js/reveal-plugins/highlight/night-owl.min.css">
+    <link rel="stylesheet" href="/assets/css/common.css">
+    <link rel="stylesheet" href="/assets/css/page.css">
+    <script src="/assets/js/reveal-plugins/highlight/highlight.min.js"></script>
+    <script src="/assets/js/reveal-plugins/highlight/highlightjs-line-numbers.min.js"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Register.StartupHook("End", function () {
+            setTimeout(function(){
+                screenh = window.innerHeight;
+        
+                headerh = document.getElementById('header-nav').offsetHeight;
+    
+                document.querySelector('.reveal').style.height = (screenh - headerh) + 'px';
+                
+                update_height(screenh, headerh);
+    
+                handleMathOverflow();
+                
+                handleSvgSize(screenh, headerh);
+                
+                handleCode(screenh, headerh); 
+            }, 500)
+        });
+    </script>
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Angles From 3 Points | SlideMe</title>
+<meta name="generator" content="Jekyll v4.2.1" />
+<meta property="og:title" content="Angles From 3 Points" />
+<meta name="author" content="Edgardo Estanga" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Using the scalar product formula, we can obtain the inner angle between two vectors. Animation example given." />
+<meta property="og:description" content="Using the scalar product formula, we can obtain the inner angle between two vectors. Animation example given." />
+<link rel="canonical" href="https://isedgar.github.io/angles-from-3-points.html" />
+<meta property="og:url" content="https://isedgar.github.io/angles-from-3-points.html" />
+<meta property="og:site_name" content="SlideMe" />
+<meta property="og:image" content="https://isedgar.github.io/assets/images/angles-from-3-points.gif" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-07-01T00:00:00-04:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://isedgar.github.io/assets/images/angles-from-3-points.gif" />
+<meta property="twitter:title" content="Angles From 3 Points" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","url":"https://isedgar.github.io/angles-from-3-points.html","headline":"Angles From 3 Points","dateModified":"2021-07-01T00:00:00-04:00","datePublished":"2021-07-01T00:00:00-04:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://isedgar.github.io/angles-from-3-points.html"},"image":"https://isedgar.github.io/assets/images/angles-from-3-points.gif","author":{"@type":"Person","name":"Edgardo Estanga"},"description":"Using the scalar product formula, we can obtain the inner angle between two vectors. Animation example given.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+<body>
+    <header id="header-nav" class="page-flex flex-align-center">
+        <a href="/#/topics" id="go2topics"><i class="icon-back-s"></i></a>
+        <p class="p-font">&nbsp;&nbsp;&nbsp;2021-07-01</p>
+    </header>
+
+    <div class="reveal">
+        <div class="slides">
+            <section id="s0">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h1 class="h1-font">Angles From 3 Points</h1>
+<h3 class="h3-font txt-yellow">Animation example</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s1">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">Given these 3 points:</h3>
+<div class="h3-font math-overflow">
+    \[A = (20,60), B = (80,60), C = (70,20)\]
+</div>                                
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s2">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<div class="svg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s3">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">Create the following animation:</h3>
+
+<div class="svg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s4">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<div class="svg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s5">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">The segment \(\overline{AC}\) aligns with segment \(\overline{AB}\)...</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s6">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<div class="h3-font math-overflow">
+    \[
+    \begin{align}
+    &\overrightarrow{AB} = B - A = (80-20,60-60) = (60,0)\\
+    &\overrightarrow{AC} = C - A = (70-20,20-60) = (50,-40)
+    \end{align}
+    \]
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s7">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">This creates 2 vectors. Let's call them \(\textbf{u}\) and \(\textbf{v}\):</h3>
+
+<div class="h3-font math-overflow">
+    \[
+    \begin{align}
+    &\textbf{u} = \overrightarrow{AB} = (60,0)\\
+    &\textbf{v} = \overrightarrow{AC} = (50,-40)
+    \end{align}
+    \]
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s8">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">
+    To produce the <a href="#s4">previous animation</a>, we have to rotate the segment \(\overline{AC}\), in such a way that its direction matches the direction of the segment \(\overline{AB}\)...
+</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s9">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">
+    That is, we need a rotation point and an <a href="https://en.wikipedia.org/wiki/Angle_of_rotation" target="_blank">angle of rotation</a> for segment \(\overline{AC}\)...
+</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s10">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">
+    In this case <mark>the rotation point is the point \(A\)</mark>, and the angle of rotation is the inner <a href="https://en.wikipedia.org/wiki/Law_of_cosines#Using_vectors" target="_blank">angle between vectors</a> \(\textbf{u}\) and \(\textbf{v}\):
+</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s11">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<div class="svg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s12">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">
+    The angle between vectors \(\textbf{u}\) and \(\textbf{v}\) can be derived from the <mark>formula of the dot product</mark>:
+</h3>
+
+<div class="h3-font math-overflow">
+    \[
+    \textbf{u} \cdot \textbf{v} = \|\textbf{u}\| \|\textbf{v}\| \text{cos} \measuredangle (\textbf{u},\textbf{v})
+    \]
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s13">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<div class="h3-font math-overflow">
+    \[
+    \begin{align}
+    &\text{cos} \measuredangle (\textbf{u},\textbf{v}) = \frac{\textbf{u} \cdot \textbf{v}}{\|\textbf{u}\| \|\textbf{v}\|}\\\\
+    &\measuredangle (\textbf{u},\textbf{v}) = \text{arccos}\left(\frac{\textbf{u} \cdot \textbf{v}}{\|\textbf{u}\| \|\textbf{v}\|}\right)
+    \end{align}
+    \]
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s14">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">Which gives us:</h3>
+
+<div class="h3-font math-overflow">
+    \[
+    \begin{align}
+    &\textbf{u} = (60,0)\\
+    &\textbf{v} = (50,-40)\\\\
+    &\measuredangle (\textbf{u},\textbf{v}) \approx 0.675 \text{ rad}
+    \end{align}
+    \]
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s15">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">We can express this angle in degrees if we need it:</h3>
+
+<div class="h3-font math-overflow">
+    \[
+    \begin{align}
+    &\measuredangle (\textbf{u},\textbf{v}) \approx 0.675 \text{ rad}\\\\
+    &\theta = \measuredangle (\textbf{u},\textbf{v}) \times \frac{180}{\pi} \approx 38.66^{\circ}
+    \end{align}
+    \]
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s16">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">Now we can start animating. In my case, I use <a href="https://svgjs.dev/docs/3.0/" target="_blank">SVG.js</a>:</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s17">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">
+    <pre class="code"><code class="language-js">var A = {x:20, y:60}
+var B = {x:80, y:60}
+var C = {x:70, y:20}
+
+var theta = 38.66
+
+var rotationPointX = A.x;
+var rotationPointY = A.y;
+
+var segmentAB = canvas.line([A,B]).attr({
+    ...
+})
+var segmentAC = canvas.line([A,C]).attr({
+    ...
+})
+
+segmentAC.animate(time).rotate(theta, rotationPointX, rotationPointY);
+    </code></pre>
+</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s18">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<p class="p-font">Watch the video:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fVXyTQ06csY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+        </div>
+    </div>
+
+    <script src="/assets/js/reveal.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@svgdotjs/svg.js@latest/dist/svg.min.js"></script>
+
+    <script src="/assets/js/reveal-plugins/math/math.js"></script>
+
+    <script src="/assets/js/common.js"></script>
+
+    <script src="/assets/js/page.js"></script>
+
+    <script src="/assets/js/angles-from-3-points.js"></script>
+</body>
+</html>

@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msapplication-TileColor" content="#603cba">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="stylesheet" href="/assets/css/reveal.css">
+    <link rel="stylesheet" href="/assets/css/theme/custom.css">
+    <link rel="stylesheet" href="/assets/icons/style.css">
+    <link rel="stylesheet" href="/assets/js/reveal-plugins/highlight/night-owl.min.css">
+    <link rel="stylesheet" href="/assets/css/common.css">
+    <link rel="stylesheet" href="/assets/css/page.css">
+    <script src="/assets/js/reveal-plugins/highlight/highlight.min.js"></script>
+    <script src="/assets/js/reveal-plugins/highlight/highlightjs-line-numbers.min.js"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Register.StartupHook("End", function () {
+            setTimeout(function(){
+                screenh = window.innerHeight;
+        
+                headerh = document.getElementById('header-nav').offsetHeight;
+    
+                document.querySelector('.reveal').style.height = (screenh - headerh) + 'px';
+                
+                update_height(screenh, headerh);
+    
+                handleMathOverflow();
+                
+                handleSvgSize(screenh, headerh);
+                
+                handleCode(screenh, headerh); 
+            }, 500)
+        });
+    </script>
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Cubic Interpolation | SlideMe</title>
+<meta name="generator" content="Jekyll v4.2.1" />
+<meta property="og:title" content="Cubic Interpolation" />
+<meta name="author" content="Edgardo Estanga" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Cubic interpolation consists of inserting new points along a cubic spline. A spline is a set of curved lines constructed from a set of points." />
+<meta property="og:description" content="Cubic interpolation consists of inserting new points along a cubic spline. A spline is a set of curved lines constructed from a set of points." />
+<link rel="canonical" href="https://isedgar.github.io/cubic-interpolation.html" />
+<meta property="og:url" content="https://isedgar.github.io/cubic-interpolation.html" />
+<meta property="og:site_name" content="SlideMe" />
+<meta property="og:image" content="https://isedgar.github.io/assets/images/cubic-interpolation.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-08-02T00:00:00-04:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://isedgar.github.io/assets/images/cubic-interpolation.jpg" />
+<meta property="twitter:title" content="Cubic Interpolation" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","url":"https://isedgar.github.io/cubic-interpolation.html","headline":"Cubic Interpolation","dateModified":"2021-08-02T00:00:00-04:00","datePublished":"2021-08-02T00:00:00-04:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://isedgar.github.io/cubic-interpolation.html"},"image":"https://isedgar.github.io/assets/images/cubic-interpolation.jpg","author":{"@type":"Person","name":"Edgardo Estanga"},"description":"Cubic interpolation consists of inserting new points along a cubic spline. A spline is a set of curved lines constructed from a set of points.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+<body>
+    <header id="header-nav" class="page-flex flex-align-center">
+        <a href="/#/topics" id="go2topics"><i class="icon-back-s"></i></a>
+        <p class="p-font">&nbsp;&nbsp;&nbsp;2021-08-02</p>
+    </header>
+
+    <div class="reveal">
+        <div class="slides">
+            <section id="s0">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h1 class="h1-font">Cubic Interpolation</h1>
+<h3 class="h3-font txt-yellow">The cubic Hermite spline</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s1">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">A <a href="https://en.wikipedia.org/wiki/Spline_(mathematics)" target="_blank">spline</a> is a set of curved lines constructed from a set of points.</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s2">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font"><a href="https://www.paulinternet.nl/?page=bicubic" target="_blank">Cubic interpolation</a> consists of inserting new points along a <a href="https://en.wikipedia.org/wiki/Cubic_Hermite_spline">cubic spline</a>.</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s3">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">For example, consider the following spline, constructed with 3 points:</h3>
+<div class="h3-font math-overflow">
+\[
+p_1 = (1,3) \quad p_2 = (2,1) \quad p_3 = (3,2)
+\]
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s4">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<div class="svg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s5">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<div class="svg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s6">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">This spline is made up of two curved lines. The first one created with \(p_1\) and \(p_2\), and the second one created with \(p_2\) and \(p_3\):</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s7">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<div class="svg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s8">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font"><mark>Each of these curved lines is created using a third-degree polynomial</mark> in this form:</h3>
+<div class="h3-font math-overflow">
+\[
+\begin{align}
+&f(x) = ax^3 + bx^2 + cx + d\\\\
+&f'(x) = 3ax^2 + 2bx + c
+\end{align}
+\]
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s9">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font"><mark>Only on the interval from \(x=0\) to \(x=1\)</mark>. So we have:</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s10">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<div class="h3-font math-overflow">
+\[
+\begin{align}
+&f(0) = d \quad f(1) = a+b+c+d\\\\
+&f'(0) = c \quad f'(1) = 3a+2b+c
+\end{align}
+\]
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s11">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">We solve for \(a\), \(b\), \(c\) and \(d\) with a <a href="https://en.wikipedia.org/wiki/System_of_linear_equations#Elimination_of_variables" target="_blank">system of equations</a>, which results in:</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s12">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<div class="h3-font math-overflow">
+\[
+\begin{align}
+&a = 2f(0) - 2f(1) + f'(0) + f'(1)\\
+&b = -3f(0) + 3f(1) - 2f'(0) - f'(1)\\
+&c = f'(0)\\
+&d = f(0)
+\end{align}
+\]
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s13">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">\(f(0)\) and \(f(1)\) are the \(y\)-coordinates of the endpoints of the curved line.</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s14">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">For example, the endpoints of the first curved line of <a href="#/s5">our spline</a> are \(p_1\) and \(p_2\):</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s15">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<div class="svg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s16">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">So in this case we have:</h3>
+<div class="h3-font math-overflow">
+\[
+\begin{align}
+&p_1 = (1,3) \quad p_2 = (2,1)\\\\
+&f(0) = 3 \quad f(1) = 1
+\end{align}
+\]
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s17">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">\(f'(0)\) and \(f'(1)\) are the <a href="https://en.wikipedia.org/wiki/Slope" target="_blank">derivatives</a> at the endpoints of the curved line:</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s18">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<div class="svg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s19">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">We use the slope of the line between the previous and the next point as the derivative at a point.</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s20">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">For example the derivative at \(p_2\) is the slope of the line formed by \(p_1\) and \(p_3\).</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s21">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">If the point doesn't have a previous or a next point, then repeat the corresponding endpoint. For example, \(p_1\) doesn't have a previous point. An extra point \(p_0\) is created:</h3>
+<div class="h3-font math-overflow">
+\[
+p_1 = (1, 3) \quad p_0 = (0, 3)
+\]
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s22">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<div class="svg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s23">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">So we have:</h3>
+<div class="h3-font math-overflow">
+\[
+\begin{align}
+&f'(0) = \frac{p_{2y} - p_{0y}}{p_{2x} - p_{0x}} = -1\\\\
+&f'(1) = \frac{p_{3y} - p_{1y}}{p_{3x} - p_{1x}} = -0.5
+\end{align}
+\]
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s24">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">If we plug these values into <a href="#/s12">these equations</a>, we'll get:</h3>
+<div class="h3-font math-overflow">
+\[
+\begin{align}
+&f(0) = 3 \quad f(1) = 1\\
+&f'(0) = -1 \quad f'(1) = -0.5\\
+&a=2.5, \quad b=-3.5 \quad c=-1 \quad d=3
+\end{align}
+\]
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s25">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<div class="h3-font math-overflow">
+\[
+\begin{align}
+&f(x) = ax^3 + bx^2 + cx + d\\\\
+&f(x) = \frac{5}{2}x^3 - \frac{7}{2}x^2 - x + 3\\\\
+\end{align}
+\]
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s26">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">Now we can interpolate values between \(p_1\) and \(p_2\), on the interval \([0,1]\).</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s27">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">For example, the interpolated point at \(x=0.25\) is:</h3>
+<div class="h3-font math-overflow">
+\[
+\begin{align}
+&z = (1+x, f(x))\\\\
+&z = (1.25, 2.57)
+\end{align}
+\]
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s28">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<div class="svg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s29">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">We add \(1\) to the \(x\)-coordinate because that's the starting point of the curved line.</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s30">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">We do the same procedure with the second curved line, and the spline will be constructed.</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s31">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<div class="svg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s32">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">Python code:</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s33">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">
+<pre class="code">
+<code class="language-python">import numpy as np
+
+# ys: y-coordinates
+# x:  any value between 0 and len(ys) - 1
+def cubic_query(ys, x):
+    n = ys.shape[0]
+
+    if x < 0 or x > n-1:
+        raise ValueError('value x must be between 0 and n-1')
+
+    if x == 0.0: return ys[0]
+    elif x == float(n-1): return ys[-1]
+
+    start = np.floor(x)
+    x -= start
+
+    prev = int(start) - 1
+    follow = int(start) + 2
+
+    p0 = ys[prev if prev >= 0 else 0]
+    p1 = ys[int(start)]
+    p2 = ys[int(start)+1]
+    p3 = ys[follow if follow < n else n-1]
+
+    f0 = p1
+    f1 = p2
+    df0 = (p2 - p0) / 2
+    df1 = (p3 - p1) / 2
+
+    a = 2*f0 - 2*f1 + df0 + df1
+    b = -3*f0 + 3*f1 - 2*df0 - df1
+    c = df0
+    d = f0
+
+    return a*x**3 + b*x**2 + c*x + d
+</code>
+</pre>
+</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s34">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<p class="p-font">Watch the video:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/syH8ASkotFg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+        </div>
+    </div>
+
+    <script src="/assets/js/reveal.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@svgdotjs/svg.js@latest/dist/svg.min.js"></script>
+
+    <script src="/assets/js/reveal-plugins/math/math.js"></script>
+
+    <script src="/assets/js/common.js"></script>
+
+    <script src="/assets/js/page.js"></script>
+
+    <script src="/assets/js/cubic-interpolation.js"></script>
+</body>
+</html>

@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msapplication-TileColor" content="#603cba">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="stylesheet" href="/assets/css/reveal.css">
+    <link rel="stylesheet" href="/assets/css/theme/custom.css">
+    <link rel="stylesheet" href="/assets/icons/style.css">
+    <link rel="stylesheet" href="/assets/js/reveal-plugins/highlight/night-owl.min.css">
+    <link rel="stylesheet" href="/assets/css/common.css">
+    <link rel="stylesheet" href="/assets/css/page.css">
+    <script src="/assets/js/reveal-plugins/highlight/highlight.min.js"></script>
+    <script src="/assets/js/reveal-plugins/highlight/highlightjs-line-numbers.min.js"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Register.StartupHook("End", function () {
+            setTimeout(function(){
+                screenh = window.innerHeight;
+        
+                headerh = document.getElementById('header-nav').offsetHeight;
+    
+                document.querySelector('.reveal').style.height = (screenh - headerh) + 'px';
+                
+                update_height(screenh, headerh);
+    
+                handleMathOverflow();
+                
+                handleSvgSize(screenh, headerh);
+                
+                handleCode(screenh, headerh); 
+            }, 500)
+        });
+    </script>
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Polygon Properties | SlideMe</title>
+<meta name="generator" content="Jekyll v4.2.1" />
+<meta property="og:title" content="Polygon Properties" />
+<meta name="author" content="Edgardo Estanga" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Draw a polygon on a canvas. The area of the polygon describes how much space it takes up on the canvas. Divide the area of the polygon by the area of the canvas." />
+<meta property="og:description" content="Draw a polygon on a canvas. The area of the polygon describes how much space it takes up on the canvas. Divide the area of the polygon by the area of the canvas." />
+<link rel="canonical" href="https://isedgar.github.io/polygon-properties.html" />
+<meta property="og:url" content="https://isedgar.github.io/polygon-properties.html" />
+<meta property="og:site_name" content="SlideMe" />
+<meta property="og:image" content="https://isedgar.github.io/assets/images/polygon-properties.gif" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-06-15T00:00:00-04:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://isedgar.github.io/assets/images/polygon-properties.gif" />
+<meta property="twitter:title" content="Polygon Properties" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","url":"https://isedgar.github.io/polygon-properties.html","headline":"Polygon Properties","dateModified":"2021-06-15T00:00:00-04:00","datePublished":"2021-06-15T00:00:00-04:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://isedgar.github.io/polygon-properties.html"},"image":"https://isedgar.github.io/assets/images/polygon-properties.gif","author":{"@type":"Person","name":"Edgardo Estanga"},"description":"Draw a polygon on a canvas. The area of the polygon describes how much space it takes up on the canvas. Divide the area of the polygon by the area of the canvas.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+<body>
+    <header id="header-nav" class="page-flex flex-align-center">
+        <a href="/#/topics" id="go2topics"><i class="icon-back-s"></i></a>
+        <p class="p-font">&nbsp;&nbsp;&nbsp;2021-06-15</p>
+    </header>
+
+    <div class="reveal">
+        <div class="slides">
+            <section id="s0">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h1 class="h1-font">Polygon Properties</h1>
+<h3 class="h3-font txt-yellow">Area, Orientation, Length and Centroid</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s1">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h2 class="h2-font txt-aqua">Area</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s2">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">Is the space occupied by the polygon.</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s3">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">For example, suppose the following canvas:</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s4">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<div class="svg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s5">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">and we draw the following triangle on it, with vertices:</h3>
+
+<div class="h3-font math-overflow">
+    \[v_1 = (0,10); v_2 = (5,5); v_3 = (10,10)\]
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s6">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<div class="svg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s7">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">The area of any <a href="https://en.wikipedia.org/wiki/Simple_polygon" target="_blank">simple polygon</a> can be obtained with the <a href="https://en.wikipedia.org/wiki/Shoelace_formula" target="_blank">Shoelace formula</a>:</h3>
+
+<div class="h3-font math-overflow">
+    \[A = \frac{1}{2} \left |\displaystyle \sum_{i=0}^{n-1} (x_{i}y_{i+1} - x_{i+1}y_{i})\right |\]
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s8">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">Where \((x_i,y_i)\), \(i=0,1,...,n-1\), are the ordered vertices of the polygon...</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s9">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">...and the first and last vertex are equal:</h3>
+<div class="h3-font math-overflow">
+    \[x_0 = x_n \text{ and } y_0 = y_n\]
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s10">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">In our case:</h3>
+<div class="h3-font math-overflow">
+    \[
+    \begin{align}
+    &A = 0.5\times | (0\times 5 - 5\times 10) + (5\times 10 - 10\times 5) + (10\times 10 - 0\times 10) |\\\\
+    &A = 25
+    \end{align}
+    \]
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s11">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">The area of the canvas is 100, so <a href="#s6">the polygon</a> occupies 25% of the canvas.</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s12">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">It makes sense, because as we can see, 4 polygons like this, will span the entire canvas:</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s13">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<div class="svg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s14">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h2 class="h2-font txt-aqua">Orientation</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s15">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">The orientation of a polygon (<mark>clockwise or counter clockwise</mark>) depends on the order in which its vertices are arranged:</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s16">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<div class="svg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s17">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">The orientation of any simple polygon can be derived from its <mark>signed area</mark></h3>
+<div class="h3-font math-overflow">
+    \[A = \frac{1}{2} \displaystyle \sum_{i=0}^{n-1} (x_{i}y_{i+1} - x_{i+1}y_{i})\]
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s18">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">If the <a href="#/s17">previous expression</a> is possitive then the polygon vertices are ordered clockwise; otherwise its orientation is counter clockwise.</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s19">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">For example, the orientation of the following polygon is clockwise:</h3>
+<div class="h3-font math-overflow">
+    \[a=(2,2), b=(8,2), c=(5,5), d=(8,8), e=(2,8)\]
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s20">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<div class="svg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s21">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">It means its signed area should be possitive. Let's check it out:</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s22">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<div class="h3-font math-overflow">
+    \[
+    \begin{align}
+    &A = 0.5\times [(a_{x}\times b_{y} - b_{x}\times a_{y}) + (b_{x}\times c_{y} - c_{x}\times b_{y}) + (c_{x}\times d_{y} - d_{x}\times c_{y}) + (d_{x}\times e_{y} - e_{x}\times d_{y}) + (e_{x}\times a_{y} - a_{x}\times e_{y})]\\\\
+    &A = 0.5\times [(2\times 2 - 8\times 2) + (8\times 5 - 5\times 2) + (5\times 8 - 8\times 5) + (8\times 8 - 2\times 8) + (2\times 2 - 2\times 8)]\\\\
+    &A = 27
+    \end{align}
+    \]
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s23">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font"><mark>Warning</mark>: <a href="#/s18">this definition</a> applies if we want visual coherence with computer screens. The formal definition is:</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s24">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font"><mark>"If the vertices are ordered counterclockwise, the signed area is positive; otherwise, it is negative."</mark></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s25">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h2 class="h2-font txt-aqua">Length</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s26">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">Is the <mark>sum of the length of its sides</mark></h3>
+<div class="h3-font math-overflow">
+\[
+L = \displaystyle \sum_{i=0}^{n-1} \sqrt{(x_{i} - x_{i+1})^2 + (y_{i} - y_{i+1})^2}
+\]
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s27">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">For example, the length of <a href="#/s20">this polygon</a> is approximately 26.5:</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s28">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<div class="svg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s29">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h2 class="h2-font txt-aqua">Centroid</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s30">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">Is a fixed and unique point representing the <a href="https://en.wikipedia.org/wiki/Center_of_gravity" target="_blank">"center of mass"</a> of a polygon.</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s31">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<div class="svg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s32">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">The <a href="https://en.wikipedia.org/wiki/Centroid#Of_a_polygon" target="_blank">coordinates of the centroid</a> \((C_x, C_y)\) of a solid simple polygon are:</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s33">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<div class="h3-font math-overflow">
+\[
+\begin{align}
+&C_x = \frac{1}{6A} \displaystyle\sum_{i=0}^{n-1} (x_i + x_{i+1}) (x_{i}y_{i+1} - x_{i+1}y_i)\\\\
+&C_y = \frac{1}{6A} \displaystyle\sum_{i=0}^{n-1} (y_i + y_{i+1}) (x_{i}y_{i+1} - x_{i+1}y_i)\\\\
+&A = \frac{1}{2} \displaystyle \sum_{i=0}^{n-1} (x_{i}y_{i+1} - x_{i+1}y_{i})
+\end{align}
+\]
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s34">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font"><a href="https://gist.github.com/isedgar/714bd75503e23a719de99479b2b0c87b" target="_blank">JS code</a>:</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s35">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<h3 class="h3-font">
+<pre class="code">
+<code class="languaje-js">var polygon={
+    area: function(points){
+        var sum=0, n=points.length;
+
+        if(points[0][0] != points[n-1][0] || points[0][1] != points[n-1][1]){
+            sum += (points[n-1][0]*points[0][1] - points[0][0]*points[n-1][1]);
+        }
+
+        for(var i=0; i < n-1; ++i){
+            sum += (points[i][0]*points[i+1][1] - points[i+1][0]*points[i][1]);
+        }
+
+        return sum/2;
+    },
+    length: function(points){
+        var l=0, n=points.length;
+
+        if(points[0][0] != points[n-1][0] || points[0][1] != points[n-1][1]){
+            l += Math.sqrt(Math.pow(points[0][1] - points[n-1][1], 2) + Math.pow(points[0][0] - points[n-1][0], 2));
+        }
+
+        for(var i=0; i < n-1; ++i){
+            l += Math.sqrt( Math.pow(points[i][1] - points[i+1][1], 2) + Math.pow(points[i][0] - points[i+1][0], 2) );
+        }
+
+        return l;
+    },
+    is_clockwise: function(points){
+        // return this.area(points) < 0 ? false : true; // visual coherence
+        return this.area(points) < 0 ? true : false; // numerical coherence
+    },
+    centroid: function(points){
+        var A=this.area(points), cx=0, cy=0, n=points.length;
+
+        if(points[0][0] != points[n-1][0] || points[0][1] != points[n-1][1]){
+            cx += ( (points[n-1][0] + points[0][0]) * (points[n-1][0]*points[0][1] - points[0][0]*points[n-1][1]) );
+            cy += ( (points[n-1][1] + points[0][1]) * (points[n-1][0]*points[0][1] - points[0][0]*points[n-1][1]) );
+        }
+
+        for(var i=0; i < n-1; ++i){
+            cx += ( (points[i][0] + points[i+1][0]) * (points[i][0]*points[i+1][1] - points[i+1][0]*points[i][1]) );
+            cy += ( (points[i][1] + points[i+1][1]) * (points[i][0]*points[i+1][1] - points[i+1][0]*points[i][1]) );
+        }
+
+        return [(1/(6*A))*cx, (1/(6*A))*cy];
+    }
+}
+
+var points=[[123,332],[262,367],[314,500],[390,378],[465,303],[436,262],[477,123],[343,181],[222,100],[233,245]];
+
+console.log('area: ' + polygon.area(points));
+console.log('clockwise: ' + polygon.is_clockwise(points));
+console.log('length: ' + polygon.length(points));
+console.log('centroid: ' + polygon.centroid(points));
+</code>
+</pre>
+</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="s36">
+    <div style="position: relative;">
+        <div class="div-outer">
+            <div class="div-middle">
+                <div class="div-inner">
+<p class="p-font">Watch the video:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8MpiVWWqXAo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+        </div>
+    </div>
+
+    <script src="/assets/js/reveal.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@svgdotjs/svg.js@latest/dist/svg.min.js"></script>
+
+    <script src="/assets/js/reveal-plugins/math/math.js"></script>
+
+    <script src="/assets/js/common.js"></script>
+
+    <script src="/assets/js/page.js"></script>
+
+    <script src="/assets/js/polygon-properties.js"></script>
+</body>
+</html>

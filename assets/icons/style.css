@@ -1,10 +1,10 @@
 @font-face {
-  font-family: 'icon';
-  src:  url('fonts/icon.eot?7amtph');
-  src:  url('fonts/icon.eot?7amtph#iefix') format('embedded-opentype'),
-    url('fonts/icon.ttf?7amtph') format('truetype'),
-    url('fonts/icon.woff?7amtph') format('woff'),
-    url('fonts/icon.svg?7amtph#icon') format('svg');
+  font-family: 'icons';
+  src:  url('fonts/icons.eot?zcrz2b');
+  src:  url('fonts/icons.eot?zcrz2b#iefix') format('embedded-opentype'),
+    url('fonts/icons.ttf?zcrz2b') format('truetype'),
+    url('fonts/icons.woff?zcrz2b') format('woff'),
+    url('fonts/icons.svg?zcrz2b#icons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -12,7 +12,7 @@
 
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icon' !important;
+  font-family: 'icons' !important;
   speak: never;
   font-style: normal;
   font-weight: normal;
@@ -25,30 +25,30 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-calendar-check-s:before {
+  content: "\e900";
+}
 .icon-back-s:before {
-  content: "\e932";
+  content: "\e901";
 }
 .icon-bank-s:before {
-  content: "\e93e";
+  content: "\e902";
 }
 .icon-brain-alt-s:before {
-  content: "\e95f";
+  content: "\e903";
 }
 .icon-envelope-alt-l:before {
-  content: "\ea6c";
+  content: "\e904";
 }
 .icon-eye-blocked-l:before {
-  content: "\ea72";
+  content: "\e905";
 }
 .icon-flag-s:before {
-  content: "\ea8b";
+  content: "\e906";
 }
 .icon-pencil-l:before {
-  content: "\eb1f";
+  content: "\e907";
 }
 .icon-question-l:before {
-  content: "\eb43";
-}
-.icon-info:before {
-  content: "\ea0c";
+  content: "\e908";
 }

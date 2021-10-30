@@ -51,6 +51,11 @@ header a{
     margin: 0 !important;
 }
 
+.topic-info .topic-date{
+    font-size: 0.6em;
+    margin: 1em !important;
+}
+
 @media only screen and (max-width: 1920px) {
     .topic-link{ /* 75% */
         width: 480px;
